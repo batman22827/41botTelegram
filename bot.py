@@ -328,6 +328,135 @@ yrok7V =yrok7V_1+yrok7V_2+yrok7V_3+yrok7V_4+yrok7V_5+yrok7V_6
 
 
 
+
+########################################7Г##############################################################################
+
+
+
+yrok7G_1 =("1 урок: "+str(sheet['M2'].value + ", " + "кабинет: ")+str(sheet['J3'].value)+'\n')
+yrok7G_2 =("2 урок: "+str(sheet['M4'].value + ", " + "кабинет: ")+str(sheet['J5'].value)+'\n')
+yrok7G_3 =("3 урок: "+str(sheet['M6'].value + ", " + "кабинет: ")+str(sheet['J7'].value)+'\n')
+yrok7G_4 =("4 урок: "+str(sheet['M8'].value + ", " + "кабинет: ")+str(sheet['J9'].value)+'\n')
+yrok7G_5 =("5 урок: "+str(sheet['M10'].value + ", " + "кабинет: ")+str(sheet['j11'].value)+'\n')
+yrok7G_6 =("6 урок: "+str(sheet['M12'].value + ", " + "кабинет: ")+str(sheet['J13'].value)+'\n')
+yrok7G_7 = len(str(sheet['M14'].value))
+
+if(yrok7G_7 >1):
+    yrok7G_7 = ("7 урок: "+str(sheet['M14'].value + ", " + "кабинет: ")+str(sheet['M15'].value)+'\n')
+else:
+    yrok7G_7=""
+
+
+
+problem_7G = str(sheet['M12'].value)
+problem_7G = len(problem_7G)
+print("7 Г")
+print(problem_7G)
+
+
+if(problem_7G < 2):
+    yrok7G_6=""
+
+
+
+yrok7G =yrok7G_1+yrok7G_2+yrok7G_3+yrok7G_4+yrok7G_5+yrok7G_6+yrok7G_7
+
+#######################################################################################################################
+
+
+
+########################################8A##############################################################################
+
+
+
+yrok8A_1 =("1 урок: "+str(sheet['N2'].value + ", " + "кабинет: ")+str(sheet['N3'].value)+'\n')
+yrok8A_2 =("2 урок: "+str(sheet['N4'].value + ", " + "кабинет: ")+str(sheet['N5'].value)+'\n')
+yrok8A_3 =("3 урок: "+str(sheet['N6'].value + ", " + "кабинет: ")+str(sheet['N7'].value)+'\n')
+yrok8A_4 =("4 урок: "+str(sheet['N8'].value + ", " + "кабинет: ")+str(sheet['N9'].value)+'\n')
+yrok8A_5 =("5 урок: "+str(sheet['N10'].value + ", " + "кабинет: ")+str(sheet['N11'].value)+'\n')
+yrok8A_6 =("6 урок: "+str(sheet['N12'].value + ", " + "кабинет: ")+str(sheet['N13'].value)+'\n')
+
+
+problem_8A = str(sheet['N12'].value)
+problem_8A = len(problem_8A)
+print("8 A")
+print(problem_8A)
+
+
+if(problem_8A < 2):
+    yrok8A_6=""
+
+
+
+yrok8A =yrok8A_1+yrok8A_2+yrok8A_3+yrok8A_4+yrok8A_5+yrok8A_6
+
+#######################################################################################################################
+
+
+
+########################################8Б##############################################################################
+
+
+
+yrok8B_1 =("1 урок: "+str(sheet['O2'].value + ", " + "кабинет: ")+str(sheet['O3'].value)+'\n')
+yrok8B_2 =("2 урок: "+str(sheet['O4'].value + ", " + "кабинет: ")+str(sheet['O5'].value)+'\n')
+yrok8B_3 =("3 урок: "+str(sheet['O6'].value + ", " + "кабинет: ")+str(sheet['O7'].value)+'\n')
+yrok8B_4 =("4 урок: "+str(sheet['O8'].value + ", " + "кабинет: ")+str(sheet['O9'].value)+'\n')
+yrok8B_5 =("5 урок: "+str(sheet['O10'].value + ", " + "кабинет: ")+str(sheet['O11'].value)+'\n')
+yrok8B_6 =("6 урок: "+str(sheet['O12'].value + ", " + "кабинет: ")+str(sheet['O13'].value)+'\n')
+
+
+problem_8B = str(sheet['O12'].value)
+problem_8B = len(problem_8B)
+print("8 Б")
+print(problem_8B)
+
+
+if(problem_8B < 2):
+    yrok8B_6=""
+
+
+
+yrok8B =yrok8B_1+yrok8B_2+yrok8B_3+yrok8B_4+yrok8B_5+yrok8B_6
+
+#######################################################################################################################
+
+
+########################################8В##############################################################################
+
+
+
+yrok8V_1 =("1 урок: "+str(sheet['P2'].value + ", " + "кабинет: ")+str(sheet['P3'].value)+'\n')
+yrok8V_2 =("2 урок: "+str(sheet['P4'].value + ", " + "кабинет: ")+str(sheet['P5'].value)+'\n')
+yrok8V_3 =("3 урок: "+str(sheet['P6'].value + ", " + "кабинет: ")+str(sheet['P7'].value)+'\n')
+yrok8V_4 =("4 урок: "+str(sheet['P8'].value + ", " + "кабинет: ")+str(sheet['P9'].value)+'\n')
+yrok8V_5 =("5 урок: "+str(sheet['P10'].value + ", " + "кабинет: ")+str(sheet['P11'].value)+'\n')
+yrok8V_6 =("6 урок: "+str(sheet['P12'].value + ", " + "кабинет: ")+str(sheet['P13'].value)+'\n')
+yrok8V_7 = len(str(sheet['P12'].value))
+if(yrok8V_7 >1):
+    yrok8V_7 = (str(sheet['P12'].value))
+else:
+    yrok8V_7=""
+
+
+
+problem_8V = str(sheet['N12'].value)
+problem_8V = len(problem_8V)
+if(problem_8V < 2):
+    yrok8V_6=""
+print("8 В")
+print(problem_8V)
+
+
+
+
+
+yrok8V =yrok8V_1+yrok8V_2+yrok8V_3+yrok8V_4+yrok8V_5+yrok8V_6
+
+#######################################################################################################################
+
+
+
 # Указываем токен
 
 bot = telebot.TeleBot('1201504985:AAGMYqDdtcvzHVKwvEE-62Jh3v97yUGGp3w')
@@ -345,6 +474,8 @@ from telebot import types
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
     # Если написали «Привет»
+
+
 
 ###########################################Привет#########################################################################
     if message.text == "Привет":
@@ -441,6 +572,29 @@ def get_text_messages(message):
     #######################################################################################################################
 
 
+
+
+    ########################################7В##############################################################################
+    if message.text == "7Г" or message.text == "7 Г" or message.text == "7г" or message.text == "7 г":
+        bot.send_message(message.from_user.id, yrok7G)
+    #######################################################################################################################
+
+     ########################################7В##############################################################################
+    if message.text == "8А" or message.text == "8 А" or message.text == "8а" or message.text == "8 а":
+            bot.send_message(message.from_user.id, yrok8A)
+        #######################################################################################################################
+
+
+
+    ########################################7В##############################################################################
+    if message.text == "8Б" or message.text == "8 Б" or message.text == "8б" or message.text == "8 б":
+        bot.send_message(message.from_user.id, yrok8B)
+    #######################################################################################################################
+
+    ########################################7В##############################################################################
+    if message.text == "8В" or message.text == "8 В" or message.text == "8в" or message.text == "8 в":
+        bot.send_message(message.from_user.id, yrok8B)
+    #######################################################################################################################
 
     elif message.text == "/help":
 

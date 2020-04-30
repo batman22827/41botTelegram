@@ -3,6 +3,7 @@ import random
 import datetime
 import telebot
 import xlrd, xlwt
+import pyowm
 import openpyxl
 import string
 import json
@@ -16,8 +17,22 @@ with open("config.json", 'r') as f:
 classCells = string.ascii_uppercase[1:-6]
 
 bot = telebot.TeleBot(config['token'])
+owm = pyowm.OWM(config['owmtoken'], language = "ru")
 
-@bot.message_handler(commands=['уроки'])
+
+
+
+
+observation = owm.weather_at_place('Тюмень')
+w = observation.get_weather()
+t = w.get_temperature('celsius')["temp"]
+t = int(t)
+hums = w.get_humidity()
+
+
+
+
+@bot.message_handler(commands=['lessons'])
 def yroki(message):
     # keyboard
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -37,8 +52,9 @@ def yroki(message):
 def welcome(message):
     # keyboard
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    item1 = types.KeyboardButton("/уроки 📖")
-    item2 = types.KeyboardButton("/help")
+    item1 = types.KeyboardButton("/lessons 📖")
+    item2 = types.KeyboardButton("/temperature ")
+    item3 = types.KeyboardButton("/help")
 
     markup.add(item1,item2)
 
@@ -50,14 +66,50 @@ def welcome(message):
 def help(message):
         # keyboard
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        item1 = types.KeyboardButton("/уроки 📖")
-
-        markup.add(item1)
-
+        item1 = types.KeyboardButton("/lessons 📖")
+        item2 = types.KeyboardButton("/temp")
+        item3 = types.KeyboardButton("/help")
+        markup.add(item1,item2,item3)
         bot.send_message(message.chat.id,
-                         "Привет, {0.first_name}!\nЯ - <b>{1.first_name}</b>,  могу сказать, какие у тебя сегодня уроки🧠.".format(
+                         "Cписок доступных комманд:\n /start-начало работы с ботом\n /lessons-вывод списка уроков на текущий день\n/t-текущая температура и рекомендация, что надеть ".format(
                              message.from_user, bot.get_me()),
                          parse_mode='html', reply_markup=markup)
+
+
+
+@bot.message_handler(commands=['t'])
+def temp(message):
+        # keyboard
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+
+        bot.send_message(message.chat.id, "Текущая температура на улице: " + str(t)+"°")
+        if t < 10:
+            bot.send_message(message.chat.id, "Тебе стоит одеться тепло, на улице холодно")
+        elif t < 14:
+            bot.send_message(message.chat.id, "Сейчас не  очень холодно, но надень что-нибудь теплое")
+        else:
+            bot.send_message(message.chat.id, "Температура классная")
+
+@bot.message_handler(commands=['lessonstom'])
+def lessontommorow(message):
+        # keyboard
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        item1 = types.KeyboardButton("Понедельник")
+        item2 = types.KeyboardButton("Вторник")
+        item3 = types.KeyboardButton("Среда")
+        item4 = types.KeyboardButton("Четверг")
+        item5 = types.KeyboardButton("Пятница")
+        markup.add(item1,item2,item3,item4,item5)
+        bot.send_message(message.chat.id,
+                         "На какой день недели?".format(
+                             message.from_user, bot.get_me()),
+                         parse_mode='html', reply_markup=markup)
+
+
+
+
+
+
 
 @bot.message_handler(content_types=['text'])
 def klass (message):
@@ -133,6 +185,7 @@ def klass (message):
             markup.add(item1, item2, item3)
 
             bot.send_message(message.chat.id, 'Теперь выбери букву класса', reply_markup=markup)
+
 
         else:
             bot.send_message(message.chat.id, 'Я не понял тебя, чтобы узнать, что я умею, напиши /help')

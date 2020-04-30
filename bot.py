@@ -21,13 +21,13 @@ bot = telebot.TeleBot(config['token'])
 def yroki(message):
     # keyboard
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    item1 = types.KeyboardButton("5")
-    item2 = types.KeyboardButton("6")
-    item3 = types.KeyboardButton("7")
-    item4 = types.KeyboardButton("8")
-    item5 = types.KeyboardButton("9")
-    item6 = types.KeyboardButton("10")
-    item7 = types.KeyboardButton("11")
+    item1 = types.KeyboardButton("/5🎓")
+    item2 = types.KeyboardButton("/6📝")
+    item3 = types.KeyboardButton("/7✏️")
+    item4 = types.KeyboardButton("/8🔔")
+    item5 = types.KeyboardButton("/9🖇")
+    item6 = types.KeyboardButton("/10🎒")
+    item7 = types.KeyboardButton("/11📚")
 
     markup.add(item1, item2, item3, item4, item5, item6, item7)
 
@@ -62,7 +62,7 @@ def help(message):
 @bot.message_handler(content_types=['text'])
 def klass (message):
     if message.chat.type == 'private':
-        if message.text == '5':
+        if message.text == '/5🎓':
 
             markup = types.InlineKeyboardMarkup(row_width=2)
             item1 = types.InlineKeyboardButton("5А", callback_data='5A')
@@ -74,7 +74,7 @@ def klass (message):
 
             bot.send_message(message.chat.id, 'Теперь выбери букву класса', reply_markup=markup)
 
-        elif message.text == '6':
+        elif message.text == '/6📝':
 
             markup = types.InlineKeyboardMarkup(row_width=2)
             item1 = types.InlineKeyboardButton("6А", callback_data='6A')
@@ -86,7 +86,7 @@ def klass (message):
 
             bot.send_message(message.chat.id, 'Теперь выбери букву класса', reply_markup=markup)
 
-        elif message.text == '7':
+        elif message.text == '/7✏️':
 
             markup = types.InlineKeyboardMarkup(row_width=2)
             item1 = types.InlineKeyboardButton("7А", callback_data='7A')
@@ -98,7 +98,7 @@ def klass (message):
 
             bot.send_message(message.chat.id, 'Теперь выбери букву класса', reply_markup=markup)
 
-        elif message.text == '8':
+        elif message.text == '/8🔔':
 
             markup = types.InlineKeyboardMarkup(row_width=2)
             item1 = types.InlineKeyboardButton("8А", callback_data='8A')
@@ -111,7 +111,7 @@ def klass (message):
             bot.send_message(message.chat.id, 'Теперь выбери букву класса', reply_markup=markup)
 
 
-        elif message.text == '9':
+        elif message.text == '9🖇':
 
             markup = types.InlineKeyboardMarkup(row_width=2)
             item1 = types.InlineKeyboardButton("9А", callback_data='9A')
@@ -123,7 +123,7 @@ def klass (message):
 
             bot.send_message(message.chat.id, 'Теперь выбери букву класса', reply_markup=markup)
 
-        elif message.text == '10':
+        elif message.text == '/10':
 
             markup = types.InlineKeyboardMarkup(row_width=2)
             item1 = types.InlineKeyboardButton("10Асоц-гум", callback_data='10S')
@@ -135,7 +135,7 @@ def klass (message):
             bot.send_message(message.chat.id, 'Теперь выбери букву класса', reply_markup=markup)
 
         else:
-            bot.send_message(message.chat.id, 'Я не понял тебя, чтобы узнать, что я умею, напиши /start')
+            bot.send_message(message.chat.id, 'Я не понял тебя, чтобы узнать, что я умею, напиши /help')
 
 
 @bot.callback_query_handler(func=lambda call: True)

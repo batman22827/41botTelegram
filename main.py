@@ -16,7 +16,7 @@ with open("config.json", 'r') as f:
 
 classCells = string.ascii_uppercase[1:-6]
 
-bot = telebot.TeleBot(config['token'])
+bot = telebot.TeleBot('token')
 
 from pyowm import OWM
 

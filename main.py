@@ -17,17 +17,16 @@ with open("config.json", 'r') as f:
 classCells = string.ascii_uppercase[1:-6]
 
 bot = telebot.TeleBot(config['token'])
-owm = pyowm.OWM(config['owmtoken'], language = "ru")
 
+from pyowm import OWM
 
+owm = OWM('aa394ffd91b3c065d825aee60d96146d')
 
-
-
-observation = owm.weather_at_place('Тюмень')
-w = observation.get_weather()
-t = w.get_temperature('celsius')["temp"]
-t = int(t)
-hums = w.get_humidity()
+mgr = owm.weather_manager()
+observation = mgr.weather_at_place('Тюмень,RU')
+w = observation.weather
+t=w.temperature('celsius')["temp"]
+t=int(t)
 
 
 
@@ -53,7 +52,7 @@ def welcome(message):
     # keyboard
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     item1 = types.KeyboardButton("/lessons 📖")
-    item2 = types.KeyboardButton("/temperature ")
+    item2 = types.KeyboardButton("/t ")
     item3 = types.KeyboardButton("/help")
 
     markup.add(item1,item2)
@@ -67,7 +66,7 @@ def help(message):
         # keyboard
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         item1 = types.KeyboardButton("/lessons 📖")
-        item2 = types.KeyboardButton("/temp")
+        item2 = types.KeyboardButton("/t")
         item3 = types.KeyboardButton("/help")
         markup.add(item1,item2,item3)
         bot.send_message(message.chat.id,
@@ -197,7 +196,7 @@ def callback_inline(call):
         if call.message:
             db = DataBase(config['days']['понедельник'])
             s = ""
-            for i, k  in enumerate(db.sheet[call.data].keys()): 
+            for i, k  in enumerate(db.sheet[call.data].keys()):
                 s += f"{i+1} урок: {k}, кабинет: {db.sheet[call.data][k]}\n"
             bot.send_message(call.message.chat.id, s)
 
@@ -205,7 +204,7 @@ def callback_inline(call):
         traceback.print_exc()
 
 class DataBase ( object ):
-    def __scrapClasees(self): 
+    def __scrapClasees(self):
         for cell in classCells:
             className = self.activeSheet[cell + "1"].value
             className = translit.transliterate(className).upper()
